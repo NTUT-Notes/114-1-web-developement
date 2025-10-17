@@ -1,0 +1,38 @@
+strong {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: red;
+    font-size: 20px;
+
+    padding: 5px;
+}
+
+em {
+    font-weight: bold;
+    color: yellow;
+    background-color: blue;
+    font-family: sans-serif;
+}
+
+a:link {
+    color: cornflowerblue;
+    background-color: azure;
+}
+
+a:visited {
+    color: yellow;
+    background-color: black;
+}
+
+a:hover {    
+    color: red;
+    font-size: 20px;
+    background-color: yellow;
+    text-decoration: underline;
+}
+
+a:active {
+    font-style: italic;
+    color: yellow;
+    background-color: black;
+}

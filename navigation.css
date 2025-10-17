@@ -1,0 +1,45 @@
+/* 
+    Navigation bar styling 
+    2025-10-01
+*/
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: green;
+    border-radius: 15px;
+    align-items: center;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    display: block;
+    color: yellow;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+    background-color: green;
+    /* border-radius: 15px; */
+    transition: ease-in-out 0.25s;
+}
+
+.navbar li a:hover {
+    background-color: limegreen;
+}
+
+.navbar li a:active {
+    background-color: black;
+}
+
+.navbar > li > a.active {
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    font-weight: bold;
+    color: white;
+    /* background-color: ; */
+}
