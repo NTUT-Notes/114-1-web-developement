@@ -21,7 +21,7 @@ jobs:
         run: |
           from="<!-- GITHUB_PAGES_HREF_COMMAND -->"
           to="<base href="https://ntut-notes.github.io/114-1-web_developement/" />"
-          find . -type f -name "*.html" -exec sed -i "s/$from/$to/g" {} +
+          find . -type f -name "*.html" -exec sed -i "s#$from#$to#g" {} +
 
   # Deployment job
   deploy:
