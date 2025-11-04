@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <style>
+            .viewport {
+                border: 1px solid black;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h4> Task I (Not need to check) </h4>
+        <p> Draw the overpaled rectangle using canvas </p>
+        <canvas id="task1_canvas" class="viewport" width="230px" height="150px"> asd </canvas>
+
+        <script>
+            var c = document.getElementById("task1_canvas");
+            var ctx = c.getContext("2d");
+            ctx.globalAlpha = 1.0;
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, 0, 130, 75);
+
+            ctx.globalAlpha = 0.5;
+            ctx.fillStyle = 'blue'; // Set the fill color
+            
+            ctx.fillRect(30, 30, 130, 75); // x, y, width, height
+        </script>
+
+        <h4> Task II </h4>
+        <p> Draw the toxic green ball using canvas </p>
+        <canvas id="task2_canvas" class="viewport" width="230px" height="150px"> asd </canvas>
+
+        <script>
+            var c = document.getElementById("task2_canvas");
+            var ctx = c.getContext("2d");
+
+            var grd = ctx.createRadialGradient(130, 50, 5, 140, 20, 90);
+            grd.addColorStop(0, "yellowgreen");
+            grd.addColorStop(1, "darkgreen");
+
+            ctx.fillStyle = grd;
+
+            ctx.beginPath();
+            ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.strokeStyle = "green";
+            ctx.lineWidth = 6;
+            ctx.stroke();
+            
+            ctx.lineWidth = 1;
+            ctx.fillStyle = "white";
+            ctx.font = "26px Arial";
+            ctx.fillText("Hi", 90, 50);
+                        
+        </script>
+
+        <h4> Task III </h4>
+        <p> Draw the cityline image using canvas </p>
+        <canvas id="task3_canvas" class="viewport" width="460px" height="300px"> asd </canvas>
+
+        <script>
+            
+
+        </script>
+
+    </body>
+</html>

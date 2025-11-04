@@ -1,0 +1,33 @@
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+        
+      - name: Replacing href for html
+        run: |
+          from="<!-- GITHUB_PAGES_HREF_COMMAND -->"
+          to="<base href="https://ntut-notes.github.io/114-1-web_developement/" />"
+          find . -type f -name "*.html" -exec sed -i "s/$from/$to/g" {} +
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

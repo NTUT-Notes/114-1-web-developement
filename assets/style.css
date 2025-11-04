@@ -1,0 +1,198 @@
+:root {
+  --nav_background: #4C763B; /* Example: a blue for primary elements */
+  --nav_focus: #3E5F44;
+  --nav_primary: #E8FFD7;
+
+  --secondary_main: #819067;
+  --highlighted: #5E936C;
+
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #EEEFE0;
+}
+
+/*------------------------
+| Navigation bar styling |
+| - 2025-10-01           |
+------------------------*/
+
+.navbar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--nav_background);
+  border-radius: 15px;
+}
+
+.navbar li {
+  float: left;
+}
+
+.navbar li a {
+  display: block;
+  color: var(--nav_primary);
+  text-align: center;
+  text-decoration: none;
+  background-color: var(--nav_background);
+  transition: ease-in-out 0.25s;
+  padding: 16px;
+  font-family: sans-serif;
+}
+
+.navbar > div  li a:hover {
+  padding: 16px 24px 16px 24px;
+  background-color: var(--nav_focus);
+}
+
+.navbar > div  li a:active {
+  background-color: #0A400C;
+}
+
+.navbar > div  >  li > a.active {
+  background-color: var(--nav_focus);
+  padding: 16px 24px 16px 24px;
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  font-weight: bold;
+}
+
+.navbar > div:hover > li > a.active {
+  padding: 16px;
+  background-color: var(--nav_background);
+}
+
+.navbar:hover > div:hover > li > a.active:hover{
+  padding: 16px 24px 16px 24px;
+  background-color: var(--nav_focus);
+}
+
+.navbar:hover > div:hover > li > a:active {
+  font-style: italic;
+}
+
+/*-------------------------------------------
+| 2025-10-03 Left and right panel           |
+| Left side is panel, right side is content | 
+-------------------------------------------*/
+.overpanel {
+  margin-top: 5px;
+  display: flex;
+}
+
+.overpanel > div {
+  padding: 20px;
+}
+
+.left-panel {
+  text-align: center;
+  align-items: center;
+  background-color: #D9E9CF;
+  border-radius: 15px;
+  width: 230px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: start; /* Centers horizontally */
+  align-items: center;    /* Centers vertically */
+}
+
+.right-panel {
+  /* background-color: lightgray; */
+  width: calc(100% - 230px);
+  border-radius: 10px;
+}
+
+.overpanel > div > img {
+  border-radius: 50%;
+}
+
+/* Image overlay effect */
+.container {
+  position: relative;
+  width: 150px;
+  
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: var(--secondary_main);
+  border-radius: 50%;
+}
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, 100%);
+  text-align: center;
+}
+
+/*-----------------------
+| Basic general styling |
+---------------------- */
+strong {
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: var(--highlighted);
+    /* font-size: 20px; */
+    /* padding: 5px; */
+}
+
+em {
+    color: white;
+    font-weight: bold;
+    background-color: var(--highlighted);
+}
+
+a:link {
+    color: #556B2F;
+    /* background-color: azure; */
+}
+
+a:visited {
+    color: #31694E;
+    background-color: black;
+}
+
+/* a:hover {
+    color: red;
+    font-size: 20px;
+    background-color: yellow;
+    text-decoration: underline;
+} */
+
+a:active {
+    font-style: italic;
+    /* color: transparent; */
+    /* background-color: black; */
+}
+
+canvas {
+  border-radius: 15px;
+}

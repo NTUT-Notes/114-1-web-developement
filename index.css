@@ -1,41 +1,32 @@
+canvas[id="task3_canvas"] {
+    height: calc(100vh - 75px);
+    width: calc(100vw - 15px);
 
-
-strong {
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    background-color: red;
-    font-size: 20px;
-
-    padding: 5px;
+    margin: 10px 0px 0px 0px;
 }
 
-em {
-    font-weight: bold;
-    color: yellow;
-    background-color: blue;
-    font-family: sans-serif;
+.welcome {
+    color: white;
+    font-size: 72px;
+    display: flex;
+    position: absolute;
+    left: 30px;
+    top: 80px;
+    margin: 20px 40px;
 }
 
-a:link {
-    color: cornflowerblue;
-    background-color: azure;
+.title {
+    color: white;
+    font-size: 96px;
+    display: flex;
+    position: absolute;
+    left: 30px;
+    top: 160px;
+    margin: 20px 40px;
 }
 
-a:visited {
-    color: yellow;
-    background-color: black;
+.main {
+    height: calc(100vh - 70px);
+    align-items: end;
+    display: flex;
 }
-
-/* a:hover {
-    color: red;
-    font-size: 20px;
-    background-color: yellow;
-    text-decoration: underline;
-} */
-
-a:active {
-    font-style: italic;
-    color: yellow;
-    background-color: black;
-}
-
