@@ -1,0 +1,59 @@
+/* 
+    Navigation bar styling 
+    2025-10-01
+*/
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: var(--nav_background);
+    border-radius: 15px;
+}
+
+.navbar li {
+    float: left;
+}
+
+.navbar li a {
+    display: block;
+    color: var(--nav_primary);
+    text-align: center;
+    text-decoration: none;
+    background-color: var(--nav_background);
+    transition: ease-in-out 0.25s;
+    padding: 16px;
+    font-family: sans-serif;
+}
+
+.navbar > div  li a:hover {
+    padding: 16px 24px 16px 24px;
+    background-color: var(--nav_focus);
+}
+
+.navbar > div  li a:active {
+    background-color: #0A400C;
+}
+
+.navbar > div  >  li > a.active {
+    background-color: var(--nav_focus);
+    padding: 16px 24px 16px 24px;
+    text-decoration-line: underline;
+    text-decoration-style: wavy;
+    font-weight: bold;
+}
+
+.navbar > div:hover > li > a.active {
+    padding: 16px;
+    background-color: var(--nav_background);
+}
+
+.navbar:hover > div:hover > li > a.active:hover{
+    padding: 16px 24px 16px 24px;
+    background-color: var(--nav_focus);
+}
+
+.navbar:hover > div:hover > li > a:active {
+    font-style: italic;
+}

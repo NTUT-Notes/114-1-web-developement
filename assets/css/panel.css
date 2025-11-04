@@ -1,34 +1,38 @@
-/* 2025-10-03 Left and right panel *//* Div left and right pannel */
+/*
+  2025-10-03 Left and right panel 
+  Left side is panel, right side is content  
+*/
+
 .overpanel {
-    margin-top: 5px;
-    display: flex;
+  margin-top: 5px;
+  display: flex;
 }
 
 .overpanel > div {
-    padding: 20px;
+  padding: 20px;
 }
 
 .left-panel {
-    text-align: center;
-    align-items: center;
-    background-color: lightgray;
-    border-radius: 15px;
-    width: 230px;
+  text-align: center;
+  align-items: center;
+  background-color: #D9E9CF;
+  border-radius: 15px;
+  width: 230px;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: start; /* Centers horizontally */
-    align-items: center;    /* Centers vertically */
+  display: flex;
+  flex-direction: column;
+  justify-content: start; /* Centers horizontally */
+  align-items: center;    /* Centers vertically */
 }
 
 .right-panel {
-    /* background-color: lightgray; */
-    width: calc(100% - 230px);
-    border-radius: 10px;
+  /* background-color: lightgray; */
+  width: calc(100% - 230px);
+  border-radius: 10px;
 }
 
 .overpanel > div > img {
-    border-radius: 50%;
+  border-radius: 50%;
 }
 
 /* Image overlay effect */
@@ -55,7 +59,7 @@
   width: 100%;
   opacity: 0;
   transition: .5s ease;
-  background-color: #9B5DE0;
+  background-color: var(--secondary_main);
   border-radius: 50%;
 }
 

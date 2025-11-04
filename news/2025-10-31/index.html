@@ -1,0 +1,134 @@
+<html>
+    <head>
+        <style>
+            .viewport {
+                border: 1px solid black;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h4> Task I (Not need to check) </h4>
+        <p> Draw the overpaled rectangle using canvas </p>
+        <canvas id="task1_canvas" class="viewport" width="230px" height="150px"> asd </canvas>
+
+        <script>
+            var c = document.getElementById("task1_canvas");
+            var ctx = c.getContext("2d");
+            ctx.globalAlpha = 1.0;
+            ctx.fillStyle = 'red';
+            ctx.fillRect(0, 0, 130, 75);
+
+            ctx.globalAlpha = 0.5;
+            ctx.fillStyle = 'blue'; // Set the fill color
+            
+            ctx.fillRect(30, 30, 130, 75); // x, y, width, height
+        </script>
+
+        <h4> Task II </h4>
+        <p> Draw the toxic green ball using canvas </p>
+        <canvas id="task2_canvas" class="viewport" width="230px" height="150px"> asd </canvas>
+
+        <script>
+            var c = document.getElementById("task2_canvas");
+            var ctx = c.getContext("2d");
+
+            var grd = ctx.createRadialGradient(130, 50, 5, 140, 20, 90);
+            grd.addColorStop(0, "yellowgreen");
+            grd.addColorStop(1, "darkgreen");
+
+            ctx.fillStyle = grd;
+
+            ctx.beginPath();
+            ctx.arc(95, 50, 40, 0, 2 * Math.PI);
+            ctx.fill();
+
+            ctx.strokeStyle = "green";
+            ctx.lineWidth = 6;
+            ctx.stroke();
+            
+            ctx.lineWidth = 1;
+            ctx.fillStyle = "white";
+            ctx.font = "26px Arial";
+            ctx.fillText("Hi", 90, 50);
+                        
+        </script>
+
+        <h4> Task III </h4>
+        <p> Draw the cityline image using canvas </p>
+        <canvas id="task3_canvas" class="viewport" width="460px" height="300px"> asd </canvas>
+
+        <script>
+            var c = document.getElementById("task3_canvas");
+            var ctx = c.getContext("2d");
+
+            var grd = ctx.createLinearGradient(0,0, 0,150);
+            grd.addColorStop(0,"rgb(22, 32, 103)");
+            grd.addColorStop(1,"rgb(16, 19, 51)");
+
+            // Gradient Sky
+            ctx.fillStyle = grd;
+            ctx.fillRect(0,0,460,300);
+
+            ctx.fillStyle = "white";
+            ctx.fillRect(25, 25, 3, 3);
+            ctx.fillRect(55, 65, 3, 3);
+            ctx.fillRect(95, 30, 3, 3);
+            ctx.fillRect(196, 25, 3, 3);
+            ctx.fillRect(280, 55, 3, 3);
+            ctx.fillRect(400, 52, 3, 3);
+
+            // Floor
+            ctx.fillStyle = "rgb(21, 24, 38)";
+            ctx.fillRect(0,225, 460,300);
+
+            // Moon
+            var grd = ctx.createRadialGradient(370, 70, 50, 371, 70, 50);
+            grd.addColorStop(1, "rgb(137, 140, 132)");
+            grd.addColorStop(0, "rgb(253, 255, 210)");
+            ctx.fillStyle = grd;
+
+            ctx.beginPath();
+            ctx.arc(350, 80, 40, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // Building 1
+            ctx.fillStyle = "rgb(41, 45, 70)";
+            ctx.fillRect(20, 120, 60, 105);
+
+            // Building 2
+            ctx.fillStyle = "rgb(41, 45, 70)";
+            ctx.fillRect(100, 100, 60, 125);
+
+            // Building 3 & windows
+            ctx.fillStyle = "rgb(47, 52, 83)";
+            ctx.fillRect(180, 80, 60, 145);
+
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(190, 90, 10, 6);
+            ctx.fillRect(220, 110, 10, 6);
+
+            // Building 4
+            ctx.fillStyle = "rgb(47, 52, 83)";
+            ctx.fillRect(260, 105, 60, 120);
+
+            // Building 5 & windows 
+            ctx.fillStyle = "rgb(56, 63, 104)";
+            ctx.fillRect(340, 85, 60, 140);
+
+            ctx.fillStyle = "yellow";
+            ctx.fillRect(350, 95, 10, 6);
+            ctx.fillRect(380, 135, 10, 6);
+
+            ctx.fillStyle = "white";
+            ctx.font = "20px Arial";
+            ctx.fillText("MOONLIGHT CITY", 10, 30);
+
+            ctx.font = "14px Arial";
+            ctx.fillText("Canvas 2D - City Skyline", 10, 45);
+
+        </script>
+
+    </body>
+</html>
