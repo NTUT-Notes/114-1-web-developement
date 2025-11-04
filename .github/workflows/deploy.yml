@@ -1,3 +1,5 @@
+name: "Deploy Github Pages"
+
 on:
   push:
 
@@ -22,6 +24,11 @@ jobs:
           from="<!-- GITHUB_PAGES_HREF_COMMAND -->"
           to="<base href="https://ntut-notes.github.io/114-1-web_developement/" />"
           find . -type f -name "*.html" -exec sed -i "s#$from#$to#g" {} +
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.' 
 
   # Deployment job
   deploy:
