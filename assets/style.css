@@ -99,6 +99,17 @@ body {
   align-items: center;    /* Centers vertically */
 }
 
+.left-panel > .contacts > div {
+  display: table;
+  position: absolute;
+}
+
+.left-panel > .contacts > a {
+  padding: 2.5px;
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .right-panel {
   /* background-color: lightgray; */
   width: calc(100% - 230px);
@@ -195,4 +206,8 @@ a:active {
 
 canvas {
   border-radius: 15px;
+}
+
+path {
+  fill: var(--highlighted);
 }

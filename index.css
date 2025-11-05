@@ -7,7 +7,7 @@ canvas[id="task3_canvas"] {
 
 .welcome {
     color: white;
-    font-size: 72px;
+    font-size: 96px;
     display: flex;
     position: absolute;
     left: 30px;
@@ -17,11 +17,11 @@ canvas[id="task3_canvas"] {
 
 .title {
     color: white;
-    font-size: 96px;
+    font-size: 72px;
     display: flex;
     position: absolute;
     left: 30px;
-    top: 160px;
+    top: 200px;
     margin: 20px 40px;
 }
 

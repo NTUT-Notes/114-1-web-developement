@@ -257,20 +257,22 @@ async function setTyping(element, target) {
 
 async function greeting() {
     var element = document.getElementById("welcome");
+    await sleep(6500);
+
     await clearTyping(element);
     await setTyping(element, greetings[greetingIndex]);
 
     greetingIndex++;
     greetingIndex = (greetingIndex >= greetings.length) ? 0 : greetingIndex;
 
-    await sleep(1000 + Math.random() * 1500);
+    
     await greeting();
 }
 
 window.onload = async () => {
     var canvaName = "task3_canvas";
 
-    var controller = new CitySkyline(canvaName);
+    new CitySkyline(canvaName);
 
     // var canva = document.getElementById(this.canvaId);
     // const resizeObserver = new ResizeObserver(entries => {
@@ -279,6 +281,5 @@ window.onload = async () => {
 
     // resizeObserver.observe(canva);
 
-    await sleep(1000 + Math.random() * 1500);
     greeting();
 }

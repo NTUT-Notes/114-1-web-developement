@@ -1,0 +1,99 @@
+.course_table {
+    background-color: lightgreen;
+    border: black 1px solid;
+    border-style: solid;
+
+}
+
+.course_table tr {
+    color: white;
+}
+
+.course_table th {
+    border: black 1px solid;
+    padding: 10px;
+    background-color: darkcyan;
+}
+
+.course_table td {
+    padding: 10px;
+    text-align: center;
+    color: black;
+    border: black 1px solid;
+}
+
+.pattle_button {
+    min-height: 30px;
+    min-width: 50px;
+}
+
+.view_frame {
+    display: flex;
+    text-align: center;
+    width: 100%;
+    height: calc(100vh - 150px);
+}
+
+.view_frame img {
+    display: inline-block;
+    width: 90%;
+    max-width: 100%;
+    max-height: calc(100vh - 150px);
+    margin: auto;
+
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.controller {
+    position: absolute;
+    align-content: center;
+    padding: 8px;
+    left: 0; 
+    right: 0; 
+    bottom: 40px;
+    margin-inline: auto; 
+    width: fit-content;
+
+    border-color: rgba(119, 136, 153, 0.3);
+    border-width: 1.5px;
+    border-style: solid;
+
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(3px);
+    border-radius: 100px;
+
+    display: table;
+}
+
+.controller p {
+    padding: 0px 10px;
+}
+
+.controller button {
+    display: table-cell;
+    vertical-align: middle;
+
+    background-color: transparent;
+    color: white;
+    padding: 8px;
+    width: 40px;
+    height: 40px;
+    
+    border-radius: 30px;
+    border-style: none;
+
+    transition: ease-in-out 100ms;
+}
+
+.controller button:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.controller button:active {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.controller button svg {
+    text-align: center;
+}
