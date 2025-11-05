@@ -20,6 +20,7 @@ jobs:
         uses: actions/configure-pages@v5
         
       - name: Replacing href for html
+        if: false
         run: |
           from="<!-- GITHUB_PAGES_HREF_COMMAND -->"
           to="<base href="https://ntut-notes.github.io/114-1-web_developement/" />"
