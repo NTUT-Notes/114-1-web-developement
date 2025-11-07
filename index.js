@@ -1,22 +1,14 @@
 const greetings = [
-        "哈囉",         // Mandarin Chinese
-        "Hello",        // English
-        "Hola",         // Spanish
-        "Bonjour",      // French
-        "Hallo",        // German
-        "Ciao",         // Italian
-        "Olá",          // Portuguese
-        "Здравствуйте", // Russian
-        "こんにちは",   // Japanese
-        "안녕하세요",   // Korean
-        "مرحبًا",      // Arabic
-        "नमस्ते",        // Hindi
-        "Sawasdee",     // Thai
-        "Xin chào",     // Vietnamese
-        "Jambo"         // Swahili
-    ];
+    "Hello",      // English
+    "哈囉",        // Mandarin Chinese
+    "こんにちは",  // Japanese
+    "Bonjour",    // French
+    "Hola",       // Spanish
+    "Hallo",      // German
+    "Jambo"       // Swahili
+];
 
-var greetingIndex = 1;
+var greetingIndex = 0;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -257,15 +249,15 @@ async function setTyping(element, target) {
 
 async function greeting() {
     var element = document.getElementById("welcome");
-    await sleep(6500);
 
-    await clearTyping(element);
     await setTyping(element, greetings[greetingIndex]);
+    await sleep(6500);
+    await clearTyping(element);
+    await sleep(100);
 
     greetingIndex++;
     greetingIndex = (greetingIndex >= greetings.length) ? 0 : greetingIndex;
 
-    
     await greeting();
 }
 

@@ -127,14 +127,14 @@ body {
   
 }
 
-.image {
+.container > .image {
   display: block;
   width: 100%;
   height: auto;
   border-radius: 50%;
 }
 
-.overlay {
+.container:hover .overlay {
   position: absolute;
   top: 0;
   bottom: 0;
