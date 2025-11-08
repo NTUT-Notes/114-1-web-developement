@@ -1,16 +1,35 @@
 :root {
-  --nav_background: #4C763B; /* Example: a blue for primary elements */
-  --nav_focus: #3E5F44;
-  --nav_primary: #E8FFD7;
+  --color-primary: #4C763B;
+  /* Primary color for focus or hover */
+  --color-primary-hover: #3E5F44; 
+  --color-primary-focus: #0A400C;
+  /* Text shown on primary */
+  --color-on-primary: #E8FFD7;
+
+  --color-secondary: #D9E9CF;
+  --color-on-secondary: #5E936C;
+  --color-on-secondary-varient: #5E936C;
+
+  /* -- Other colors -- */
+  --color-highlight: #5E936C;
+  --color-on-highlight: #FFFFFF;
+
+  /* -- Color for components -- */
+  --color-surface: #FFFFFF;
+  --color-on-surface: #000000;
+
+  --color-background: #EEEFE0;
+  --color-on-background: #000000;
+  --color-on-background-varient: #31694E;
 
   --secondary_main: #819067;
-  --highlighted: #5E936C;
 
   font-family: sans-serif;
 }
 
 body {
-  background-color: #EEEFE0;
+  color: var(--color-on-background);
+  background-color: var(--color-background);
 }
 
 /*------------------------
@@ -23,7 +42,7 @@ body {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: var(--nav_background);
+  background-color: var(--color-primary);
   border-radius: 15px;
 }
 
@@ -33,10 +52,10 @@ body {
 
 .navbar li a {
   display: block;
-  color: var(--nav_primary);
+  color: var(--color-on-primary);
   text-align: center;
   text-decoration: none;
-  background-color: var(--nav_background);
+  background-color: var(--color-primary);
   transition: ease-in-out 0.25s;
   padding: 16px;
   font-family: sans-serif;
@@ -44,15 +63,15 @@ body {
 
 .navbar > div  li a:hover {
   padding: 16px 24px 16px 24px;
-  background-color: var(--nav_focus);
+  background-color: var(--color-primary-hover);
 }
 
 .navbar > div  li a:active {
-  background-color: #0A400C;
+  background-color: var(--color-primary-focus);
 }
 
 .navbar > div  >  li > a.active {
-  background-color: var(--nav_focus);
+  background-color: var(--color-primary-hover);
   padding: 16px 24px 16px 24px;
   text-decoration-line: underline;
   text-decoration-style: wavy;
@@ -61,12 +80,12 @@ body {
 
 .navbar > div:hover > li > a.active {
   padding: 16px;
-  background-color: var(--nav_background);
+  background-color: var(--color-primary);
 }
 
 .navbar:hover > div:hover > li > a.active:hover{
   padding: 16px 24px 16px 24px;
-  background-color: var(--nav_focus);
+  background-color: var(--color-primary-hover);
 }
 
 .navbar:hover > div:hover > li > a:active {
@@ -89,7 +108,7 @@ body {
 .left-panel {
   text-align: center;
   align-items: center;
-  background-color: #D9E9CF;
+  background-color: var(--color-secondary);
   border-radius: 15px;
   width: 230px;
 
@@ -120,88 +139,40 @@ body {
   border-radius: 50%;
 }
 
-/* Image overlay effect */
-.container {
-  position: relative;
-  width: 150px;
-  
-}
 
-.container > .image {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 50%;
-}
-
-.container:hover .overlay {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: .5s ease;
-  background-color: var(--secondary_main);
-  border-radius: 50%;
-}
-
-.container:hover .overlay {
-  opacity: 1;
-}
-
-.text {
-  color: white;
-  font-size: 20px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, 100%);
-  text-align: center;
-}
 
 /*-----------------------
 | Basic general styling |
 ---------------------- */
 strong {
-    font-weight: bold;
-    color: rgb(255, 255, 255);
-    background-color: var(--highlighted);
-    /* font-size: 20px; */
-    /* padding: 5px; */
+  font-weight: bold;
+  color: var(--color-on-highlight);
+  background-color: var(--color-highlight);
 }
 
 em {
-    color: white;
-    font-weight: bold;
-    background-color: var(--highlighted);
+  font-weight: bold;
+  color: var(--color-on-highlight);
+  background-color: var(--color-highlight);
 }
 
 a:link {
-    color: #556B2F;
-    /* background-color: azure; */
+  color: #556B2F;
+  text-decoration: none;
 }
 
 a:visited {
-    color: #31694E;
-    background-color: black;
+  color: var(--color-on-background-varient);
+  background-color: black;
 }
 
-/* a:hover {
-    color: red;
-    font-size: 20px;
-    background-color: yellow;
-    text-decoration: underline;
-} */
+a:hover {
+  background-color: var(--nav_background);
+  text-decoration: underline;
+}
 
 a:active {
-    font-style: italic;
-    /* color: transparent; */
-    /* background-color: black; */
+  font-style: italic;
 }
 
 canvas {
@@ -209,5 +180,5 @@ canvas {
 }
 
 path {
-  fill: var(--highlighted);
+  fill: var(--color-on-secondary-varient);
 }

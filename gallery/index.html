@@ -25,23 +25,46 @@
 <body>
     <h2> Picture of today </h2>
     
-    <div class="view_frame"> 
-        <img id="viewport" class="viewport">
-
-        <div class="controller"> 
-            <button onclick="changePicture(-1)"> 
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.707 4.293a1 1 0 0 1 0 1.414L9.414 12l6.293 6.293a1 1 0 0 1-1.414 1.414l-7-7a1 1 0 0 1 0-1.414l7-7a1 1 0 0 1 1.414 0Z" fill="#ffffff"/></svg>
-            </button>
-
-            <div id="information_box">
-                <p id="viewport_title" >Loading...</p>
-                <p id="viewport_indicator" ></p>
-            </div>
+    <div class="image-viewer"> 
+        <div class="viewer-viewport">
+            <img id="viewer-image" class="viewport" usemap="#image-map">
             
-            <button onclick="changePicture(1)"> 
-                <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.293 4.293a1 1 0 0 0 0 1.414L14.586 12l-6.293 6.293a1 1 0 1 0 1.414 1.414l7-7a1 1 0 0 0 0-1.414l-7-7a1 1 0 0 0-1.414 0Z" fill="#ffffff"/></svg>
-            </button>
-        </div>
-    </div>
+            <img id="viewer-overlay" usemap="#image-map">
 
+            <map name="image-map">
+                <area id="viewer-area" target="_blank" title="Click here!" href="https://google.com" coords="" shape="poly">
+            </map>
+
+            <p id="viewer-location"> @Taichung City </p>
+        </div>
+
+        <table class="indicator">
+            <tr>
+                <td>
+                    <div class="author" title="Shot on iPhone 13 Pro by Ethan">
+                        <img src="https://a.ppy.sh/17269597?1692843848.jpeg"> 
+                    </div>
+                </td>
+
+                <td>
+                    <div class="indicator-ctrl"> 
+                        <button onclick="controller.changePicture(-1)"> 
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.707 4.293a1 1 0 0 1 0 1.414L9.414 12l6.293 6.293a1 1 0 0 1-1.414 1.414l-7-7a1 1 0 0 1 0-1.414l7-7a1 1 0 0 1 1.414 0Z" fill="#ffffff"/></svg>
+                        </button>
+
+                        <div id="indicator-info-warp">
+                            <p id="indicator-info-title" >Loading...</p>
+                            <p id="indicator-info-index" ></p>
+                        </div>
+                        
+                        <button onclick="controller.changePicture(1)"> 
+                            <svg width="24" height="24" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.293 4.293a1 1 0 0 0 0 1.414L14.586 12l-6.293 6.293a1 1 0 1 0 1.414 1.414l7-7a1 1 0 0 0 0-1.414l-7-7a1 1 0 0 0-1.414 0Z" fill="#ffffff"/></svg>
+                        </button>
+
+                        
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
 </body>

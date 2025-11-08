@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="face.css">
 
+    <script src="./script.js"> </script>
+
     <link rel="icon" type="image/x-icon" href="./../favicon.ico">
 
     <ul class="navbar">
@@ -34,68 +36,113 @@
     <div class="overpanel">
 
         <div class="left-panel">
+            <h2> Page Selector </h2>
+            <table id="course_table" class="course_table">
+                <tr>
+                    <th> Week </th>
+                    <th> Wed. </th>
+                    <th> Fri. </th>
+                </tr>
 
-            <div class="container">
-                <img src="../assets/faces.png" alt="Avatar" class="image" style="width:100%">
-                <div class="middle" title="2025/10/15 Task 圖片有眼睛動畫">
-                    <img src="../assets/eyes.png" alt="Avatar" class="image" style="width:100%" usemap="#face-map">
-                    <map name="face-map">
-                        <area onclick="alert('你禮貌嗎')" shape="rect" coords="40,30,110,80" alt="Left Area">
-                    </map>
-                </div>
-            </div>
+                <tr>
+                    <td> 1 </td>
+                    <td colspan="2" rowspan="2"> 
+                        <a onclick="switchFrame('2025-09-19')"> Switch </a>
+                    </td>
+                </tr>
 
-            <h2 id="PHOTO"> Ethan </h2>
-            <p> This is the profile picture I used in the game 
-                <abbr title="osu! is not related to Oregon State University"> osu! </abbr>
-            </p>
+                <tr>
+                    <td> 2 </td>
+                </tr>
 
-            <p>
-                Website: <a href="http://localhost"> http://localhost </a>
-            </p>
+                <tr>
+                    <td> 3 </td>
+                    <td colspan="2"> <a onclick="switchFrame('2025-10-01')"> Switch </a> </td>
+                    
+                </tr>
 
-            <p>
-                Email: t113590021@ntut.org.tw
-            </p>
+                <tr>
+                    <td> 4 </td>
+                    <td colspan="2"> <a onclick="switchFrame('2025-10-03')"> Switch </a> </td>
+                </tr>
+
+                <tr>
+                    <td> 5 </td>
+                    <td colspan="2"> <a onclick="switchFrame('2025-10-15')"> Switch </a> </td>
+                </tr>
+
+                <tr>
+                    <td> 6 </td>
+                    <td colspan="2"> <a onclick="switchFrame('2025-10-17')"> Switch </a> </td>
+                </tr>
+
+                <tr>
+                    <td> 7 </td>
+                    <td colspan="2"> <a onclick="switchFrame('2025-10-22')"> Switch </a> </td>
+                </tr>
+
+                <tr>
+                    <td> 8 </td>
+                    <td> <a onclick="switchFrame('2025-10-29')"> Switch </a> </td>
+                    <td> <a onclick="switchFrame('2025-10-31')"> Switch </a> </td>
+                </tr>
+
+                <tr>
+                    <td> 9 </td>
+                    <td colspan="2"> Midterm Week</td>
+                </tr>
+            </table>
+
+            <h4> 
+                Chagne The Table Width
+            </h4>
+
+            <button onclick="changeWidth('200px')">
+                200px
+            </button>
+
+            <button onclick="changeWidth('500px')">
+                500px
+            </button>
+
+            <h4> 
+                Chagne The Border and the Spacing Width
+            </h4>
+
+            <button onclick="changeSpacing('1px')">
+                1px
+            </button>
+
+            <button onclick="changeSpacing('10px')">
+                10px
+            </button>
+
+            <button onclick="changeSpacing('20px')">
+                20px
+            </button>
+
+            <h4> 
+                Chagne The Table Color
+            </h4>
+
+            <button style="background-color: lightgreen;" class="pattle_button" onclick="changeColor('lightgreen')"> </button>
+
+            <button style="background-color: lightblue;" class="pattle_button" onclick="changeColor('lightblue')"> </button>
+
+            <button style="background-color: lightpink;" class="pattle_button" onclick="changeColor('lightpink')"> </button>
+
+            <button style="background-color: lightcoral;" class="pattle_button" onclick="changeColor('lightcoral')"> </button>
+
+            <h4> </h4>
+
+            <button onclick="reset()"> Reset</button>
 
         </div>
 
         <div class="right-panel">
-            <h1> 2025/10/29 Course </h1>
-            <iframe src="./2025-10-29/index.html"
-                onload="resizeIframe(this)"
-            ></iframe>
-
-            <h1> 2025/10/22 Course </h1>
-            <iframe src="2025-10-22.html"
-                onload="resizeIframe(this)"
-            ></iframe>
-
-            <h1> 2025/10/17 Course </h1>
-            <iframe src="2025-10-17.html"
-                onload="resizeIframe(this)"
-            ></iframe>
-
-            <h1> 2025/10/03 Course </h1>
-            <iframe src="2025-10-03.html"
-                onload="resizeIframe(this)"
-            ></iframe>
-
-            <hr>
-            <h1> 2025/10/01 Course </h1>
-            <iframe src="2025-10-01.html" 
-                onload="resizeIframe(this)"
-            ></iframe>
-
-            <hr>
-            <h1> 2025/09/19 Course </h1>
-            <iframe src="2025-09-19.html" 
-                onload="resizeIframe(this)"
-            ></iframe>
-
+            <h1 id="title"> </h1>
+            <iframe id="frame" onload="resizeIframe(this)"></iframe>
         </div>
 
     </div>
-
-    
 </body>
