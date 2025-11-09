@@ -182,3 +182,19 @@ canvas {
 path {
   fill: var(--color-on-secondary-varient);
 }
+
+button {
+  color: var(--color-on-primary);
+  border-radius: 15px;
+  border: none;
+  padding: 6px 12px;
+  background-color: var(--color-on-secondary);
+}
+
+button:hover {
+  background-color: var(--color-on-background-varient);
+}
+
+button:active {
+  background-color:  var(--color-highlight);
+}

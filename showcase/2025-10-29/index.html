@@ -1,9 +1,22 @@
 <head>
+    <link rel="stylesheet" href="./../../assets/style.css">
+
     <script src="script.js" > </script> 
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+    <h2> Polaroid Image Switcher </h2>
+    <img id="viewport" class="viewport" src="https://cdn.mos.cms.futurecdn.net/BwL2586BtvBPywasXXtzwA.jpeg">
+
+    <div class="controller"> 
+        <button onclick="changePicture(-1)"> Prev</button>
+        <p id="viewport_indicator" style="display: inline;"> Image 1 of 5 </p>
+        <button onclick="changePicture(1)"> Next </button>
+    </div>
+
+    <h2> Table styler </h2>
+
     <table id="course_table" class="course_table">
         <tr> 
             <th> Math </th>
@@ -69,13 +82,5 @@
 
     <button onclick="reset()"> Reset</button>
 
-    <h2> Picture of today </h2>
-    <img id="viewport" class="viewport" src="https://cdn.mos.cms.futurecdn.net/BwL2586BtvBPywasXXtzwA.jpeg">
-
-    <div class="controller"> 
-        <button onclick="changePicture(-1)"> Prev</button>
-        <p id="viewport_indicator" style="display: inline;"> Image 1 of 5 </p>
-        <button onclick="changePicture(1)"> Next </button>
-    </div>
 </body>
 
