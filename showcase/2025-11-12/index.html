@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas 時鐘</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #2c3e50;
+        }
+        canvas {
+            border-radius: 50%;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3), inset 0 3px 8px rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="clockCanvas" width="500" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById('clockCanvas');
+        const ctx = canvas.getContext('2d');
+        const radius = canvas.height / 2;
+
+        // 將畫布的原點 (0,0) 移動到中心
+        ctx.translate(radius, radius);
+
+        // 主繪製函數
+        function drawClock() {
+            // 清除畫布，為新的一幀做準備
+            ctx.clearRect(-radius, -radius, canvas.width, canvas.height);
+
+            drawFace(ctx, radius);
+            drawScales(ctx, radius);
+            drawNumbers(ctx, radius);
+            drawSecondCircles(ctx, radius);
+            drawTime(ctx, radius);
+            drawDigitalTime(ctx, radius);
+        }
+
+        // 1. 繪製錶盤 (漸層背景)
+        function drawFace(ctx, radius) {
+            const grad = ctx.createRadialGradient(0, 0, radius * 0.95, 0, 0, radius * 1.05);
+            grad.addColorStop(0, '#333');
+            grad.addColorStop(0.5, 'white');
+            grad.addColorStop(1, '#333');
+            
+            ctx.beginPath();
+            ctx.arc(0, 0, radius, 0, 2 * Math.PI);
+            ctx.fillStyle = 'white'; // Fallback color
+            ctx.fill();
+            
+            ctx.strokeStyle = grad;
+            ctx.lineWidth = radius * 0.1;
+            ctx.stroke();
+
+            // 繪製中心點
+            ctx.beginPath();
+            ctx.arc(0, 0, radius * 0.05, 0, 2 * Math.PI);
+            ctx.fillStyle = '#333';
+            ctx.fill();
+        }
+
+        // 2. 繪製刻度
+        function drawScales(ctx, radius) {
+            ctx.beginPath();
+            for (let i = 0; i < 60; i++) {
+                const angle = (i / 60) * 2 * Math.PI;
+                ctx.moveTo(0,0);
+                // 判斷是小時刻度還是分鐘刻度
+                if (i % 5 === 0) { // 小時刻度 (Bold)
+                    ctx.lineWidth = 4;
+                    const x1 = Math.cos(angle) * (radius * 0.82);
+                    const y1 = Math.sin(angle) * (radius * 0.82);
+                    const x2 = Math.cos(angle) * (radius * 0.9);
+                    const y2 = Math.sin(angle) * (radius * 0.9);
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+                } else { // 分鐘/秒鐘刻度 (thin, short)
+                    ctx.lineWidth = 2;
+                    const x1 = Math.cos(angle) * (radius * 0.85);
+                    const y1 = Math.sin(angle) * (radius * 0.85);
+                    const x2 = Math.cos(angle) * (radius * 0.9);
+                    const y2 = Math.sin(angle) * (radius * 0.9);
+                    ctx.moveTo(x1, y1);
+                    ctx.lineTo(x2, y2);
+                }
+            }
+            ctx.strokeStyle = '#333';
+            ctx.stroke();
+        }
+
+        // 3. 繪製羅馬數字
+        function drawNumbers(ctx, radius) {
+            const romanNumerals = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"];
+            ctx.font = radius * 0.15 + "px serif";
+            ctx.textBaseline = "middle";
+            ctx.textAlign = "center";
+            ctx.fillStyle = '#333';
+
+            for (let i = 0; i < 12; i++) {
+                // 角度需要-90度 (PI/2) 來讓XII在頂部
+                const angle = (i / 12) * 2 * Math.PI - Math.PI / 2;
+                const x = Math.cos(angle) * radius * 0.72;
+                const y = Math.sin(angle) * radius * 0.72;
+                // 數字本身也需要旋轉以匹配時鐘的角度
+                ctx.save();
+                ctx.translate(x, y);
+                ctx.rotate(angle + Math.PI / 2);
+                ctx.fillText(romanNumerals[i], 0, 0);
+                ctx.restore();
+            }
+        }
+        
+        // 4. 繪製每秒的圓點
+        function drawSecondCircles(ctx, radius) {
+            const now = new Date();
+            const second = now.getSeconds();
+            
+            for (let i = 0; i < 60; i++) {
+                const angle = (i / 60) * 2 * Math.PI - Math.PI / 2;
+                const x = Math.cos(angle) * (radius * 0.92);
+                const y = Math.sin(angle) * (radius * 0.92);
+                
+                ctx.beginPath();
+                ctx.arc(x, y, 2, 0, 2 * Math.PI);
+                
+                // 如果是當前的秒數，就用不同顏色標示
+                if(i === second) {
+                    ctx.fillStyle = 'red';
+                } else {
+                    ctx.fillStyle = '#aaa';
+                }
+                ctx.fill();
+            }
+        }
+        
+        // 5. 繪製指針 (多邊形)
+        function drawTime(ctx, radius) {
+            const now = new Date();
+            let hour = now.getHours();
+            let minute = now.getMinutes();
+            let second = now.getSeconds();
+
+            // 時針
+            hour = hour % 12;
+            let hourAngle = (hour * Math.PI / 6) + (minute * Math.PI / (6 * 60));
+            drawHand(ctx, hourAngle, radius * 0.5, radius * 0.05, 'navy');
+
+            // 分針
+            let minuteAngle = (minute * Math.PI / 30) + (second * Math.PI / (30 * 60));
+            drawHand(ctx, minuteAngle, radius * 0.7, radius * 0.04, 'green');
+
+            // 秒針
+            let secondAngle = (second * Math.PI / 30);
+            drawHand(ctx, secondAngle, radius * 0.8, radius * 0.02, 'red');
+        }
+
+        // 繪製單一指針的通用函數 (多邊形)
+        function drawHand(ctx, angle, length, width, color) {
+            ctx.save(); // 保存當前狀態
+            ctx.rotate(angle);
+            ctx.beginPath();
+            ctx.fillStyle = color;
+            // 從中心點開始繪製一個多邊形
+            ctx.moveTo(0, 0);
+            ctx.lineTo(-width, 15);
+            ctx.lineTo(0, -length);
+            ctx.lineTo(width, 15);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore(); // 恢復到旋轉前的狀態
+        }
+
+        // 6. 繪製數字時間
+        function drawDigitalTime(ctx, radius) {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('en-US', { hour12: false });
+            
+            ctx.font = "bold " + radius * 0.12 + "px monospace";
+            ctx.fillStyle = "#333";
+            ctx.textAlign = "center";
+            ctx.fillText(timeString, 0, radius * 0.4);
+        }
+
+        // 每秒重新繪製
+        setInterval(drawClock, 1000);
+        drawClock(); // 立即執行一次以避免初始延遲
+
+    </script>
+</body>
+</html>

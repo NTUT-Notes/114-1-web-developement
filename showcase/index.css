@@ -12,11 +12,15 @@ iframe {
     background-color: lightgreen;
     border: black 1px solid;
     border-style: solid;
-
+    
 }
 
 .course_table tr {
     color: white;
+}
+
+.course_table tr a {
+    cursor: pointer;
 }
 
 .course_table th {

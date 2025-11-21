@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="./../../assets/canva_game.js" > </script> 
+    <script src="script.js" > </script> 
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        canvas {
+            border: 1px solid #d3d3d3;
+            background-color: #f1f1f1;
+        }
+        button {
+            min-width: 50px;
+        }
+    </style>
+</head>
+
+<body onload="demoGame.init('demo', 480, 200); demoGame.start()">
+    <br>
+    <!-- <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button> -->
+    <!-- <p>Use the ACCELERATE button to stay in the air</p>
+    <p>How long can you stay alive?</p> -->
+
+    <canvas id="demo"></canvas>
+
+    <h4> Change the color of the L shape </h4>
+    <button onclick="cubeShape.color = 'red'"> Red </button>
+    <button onclick="cubeShape.color = 'green'"> Green </button>
+    <button onclick="cubeShape.color = 'yellow'"> Yellow </button>
+    <button onclick="cubeShape.color = 'blue'"> Blue </button>
+
+    <h4> Move the L shape </h4>
+    <div style="padding: 10px 30px ;">
+        <button onmousedown="LShapeSetSPD(0, -5)" onmouseup="LShapeSetSPD(0, 0)"> Up </button>
+    </div>
+    
+    <button onmousedown="LShapeSetSPD(-5, 0)" onmouseup="LShapeSetSPD(0, 0)"> Left </button>
+    <button onmousedown="LShapeSetSPD(5, 0)" onmouseup="LShapeSetSPD(0, 0)"> Right </button>
+    
+    <div style="padding: 10px 30px ;">
+        <button onmousedown="LShapeSetSPD(0, 5)" onmouseup="LShapeSetSPD(0, 0)"> Down </button>
+    </div>
+
+    <h4> Move the Image shape </h4>
+    <div style="padding: 10px 30px ;">
+        <button onmousedown="ImageShapeSetSPD(0, -5)" onmouseup="ImageShapeSetSPD(0, 0)"> Up </button>
+    </div>
+    
+    <button onmousedown="ImageShapeSetSPD(-5, 0)" onmouseup="ImageShapeSetSPD(0, 0)"> Left </button>
+    <button onmousedown="ImageShapeSetSPD(5, 0)" onmouseup="ImageShapeSetSPD(0, 0)"> Right </button>
+    
+    <div style="padding: 10px 30px ;">
+        <button onmousedown="ImageShapeSetSPD(0, 5)" onmouseup="ImageShapeSetSPD(0, 0)"> Down </button>
+    </div>
+
+</body>
+
+</html>
