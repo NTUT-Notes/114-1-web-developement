@@ -307,7 +307,7 @@ class GameController {
   
   updateGameArea(self) {
     var length = self.components.length;
-    this.clear();
+    self.clear();
 
     for (var i=0; i<length; i++) {
       self.components[i].newPos();
@@ -315,5 +315,10 @@ class GameController {
     }
 
     self.frameNo += 1;
+  }
+
+  addCompoinent(object) {
+    object.parent = this;
+    this.components.push(object);
   }
 }

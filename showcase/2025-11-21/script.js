@@ -12,7 +12,7 @@ class MovingSmile extends Component {
     this.crash = new Image();
     this.crash.src = 'https://m.media-amazon.com/images/I/715vwvP5ZEL.png';
     
-    this.lastCollusionFrame = -1000;
+    this.lastCollusionFrame = 0;
   }
 
   start() {
@@ -25,20 +25,6 @@ class MovingSmile extends Component {
     var frame = this.parent.frameNo;
 
     var image;
-
-    for (var i=0; i<this.parent.components.length; i++) {
-      if (this.parent.components[i].type != "obstacle") {
-        continue;
-      }
-
-      console.log(this.crashWith(this.parent.components[i]));
-
-      if (this.crashWith(this.parent.components[i])) {
-        this.speedX = 0;
-        this.speedY = 0;
-        this.lastCollusionFrame = frame;
-      }
-    }
 
     var hitBound = this.checkHitBound();
 
@@ -59,16 +45,26 @@ class MovingSmile extends Component {
     }
 
     if (hitBound != Bound.No) {
-      this.lastCollusionFrame = frame;
+      this.lastCollusionFrame += 1;
       return;
     }
 
-    if (frame - this.lastCollusionFrame < 25) {
-      image = this.crash;
-    } else if ( Math.round(frame / 25) % 2 == 0 ) {
+    if ( this.lastCollusionFrame % 2 == 0 ) {
       image = this.smile;
     } else {
       image = this.angry;
+    }
+
+    for (var i=0; i<this.parent.components.length; i++) {
+      if (this.parent.components[i].type != "obstacle") {
+        continue;
+      }
+
+      if (this.crashWith(this.parent.components[i])) {
+        this.speedX = 0;
+        this.speedY = 0;
+        image = this.crash;
+      }
     }
 
     ctx.drawImage(
@@ -89,6 +85,23 @@ class Obstacle extends Cube {
   }
 }
 
+class DragAndDrop extends Cube {
+  constructor(x, y, width, height, color) {
+    super(x, y, width, height, color);
+
+    this.type = "dnd";
+  }
+}
+
+function addObstacle() {
+  var width = 15 + 30 * Math.random();
+  var height = 15 + 30 * Math.random();
+
+  var xPos = 480 * Math.random();
+  var yPos = 480 * Math.random();
+
+  imageGame.addCompoinent(new Obstacle(xPos, yPos, width, height, "red"));
+}
 
 function onImageGameStart() {
   const count = 3;
@@ -98,6 +111,47 @@ function onImageGameStart() {
   }
 
   imageGame.components.push(new Obstacle(260, 260, 100, 20, "red"));
+
+  setInterval(addObstacle, 2000);
 }
 
 var imageGame = new GameController("canvas", 10, [], onImageGameStart)
+
+imageGame.canvas.addEventListener('click', function (e) {
+  imageGame.addCompoinent(new Obstacle(e.pageX-20, e.pageY-70, 15, 10, "blue"));
+})
+
+function onDragAndDropStart() {
+  dragAndDrop.components.push(new DragAndDrop(60, 60, 15, 10, "blue"));
+}
+
+var dragAndDrop = new GameController("canvas", 10, [], onDragAndDropStart)
+
+var mouseDown = false;
+
+dragAndDrop.canvas.addEventListener('mousedown', function (e) {
+  var mouseX = e.clientX - 20;
+  var mouseY = e.clientY - 380;
+
+  var virtualObj = new Cube(mouseX+5 ,mouseY+5, 1, 1, "red");
+
+  if (!virtualObj.crashWith(dragAndDrop.components[0])) return;
+
+  mouseDown = true;
+})
+
+dragAndDrop.canvas.addEventListener('mouseup', function (e) {
+  mouseDown = false;
+})
+
+dragAndDrop.canvas.addEventListener('mousemove', function (e) {
+  if (! mouseDown) return;
+
+  var mouseX = e.clientX - 20;
+  var mouseY = e.clientY - 380;
+
+  
+
+  dragAndDrop.components[0].x = mouseX;
+  dragAndDrop.components[0].y = mouseY;
+})
